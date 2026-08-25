@@ -218,6 +218,7 @@ export interface WelcomeImageText {
   y: number;
   color: string;
   font_size: number;
+  is_bold?: boolean;
 }
 
 export interface WelcomeImageTexts {
