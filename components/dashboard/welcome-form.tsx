@@ -784,6 +784,17 @@ export function WelcomeForm({ initialConfig, channels, guildId }: WelcomeFormPro
                       />
                     </div>
                   </div>
+
+                  <div className="flex items-center justify-between md:col-span-2 border-t border-slate-800/50 pt-4 mt-2">
+                    <div>
+                      <span className="text-xs font-bold text-slate-400">Bold Text</span>
+                      <p className="text-[10px] text-slate-500 mt-0.5">Toggle between bold and regular font weight for this text layer.</p>
+                    </div>
+                    <Switch 
+                      checked={currentTextLayer.is_bold !== undefined ? currentTextLayer.is_bold : true}
+                      onCheckedChange={(val) => updateText(activeTextLayer, "is_bold", val)}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
