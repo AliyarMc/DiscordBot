@@ -163,10 +163,11 @@ export function WelcomePreviewCanvas({ imageConfig, serverName = "UNDERWORLD Δ 
         const textContent = formatText(value.content);
         const fontColor = value.color || "#ffffff";
         const fontSize = value.font_size || 24;
+        const isBold = value.is_bold !== undefined ? value.is_bold : true;
         const tx = value.x;
         const ty = value.y;
 
-        ctx.font = `bold ${fontSize}px sans-serif`;
+        ctx.font = `${isBold ? "bold" : "normal"} ${fontSize}px sans-serif`;
         ctx.fillStyle = fontColor;
         ctx.fillText(textContent, tx, ty);
       }
