@@ -190,6 +190,51 @@ export interface WelcomeEmbedData {
   image?: string | null;
 }
 
+export interface WelcomeImageCanvas {
+  width: number;
+  height: number;
+  background_type: string; // "solid" | "gradient" | "image"
+  background_color: string;
+  gradient_color1: string;
+  gradient_color2: string;
+  background_image_url?: string | null;
+  overlay_opacity: number;
+  border_thickness: number;
+  border_color: string;
+}
+
+export interface WelcomeImageAvatar {
+  x: number;
+  y: number;
+  size: number;
+  shape: string; // "rounded" | "square"
+  border_thickness: number;
+  border_color: string;
+}
+
+export interface WelcomeImageText {
+  content: string;
+  x: number;
+  y: number;
+  color: string;
+  font_size: number;
+}
+
+export interface WelcomeImageTexts {
+  text1?: WelcomeImageText | null;
+  text2?: WelcomeImageText | null;
+  text3?: WelcomeImageText | null;
+  text4?: WelcomeImageText | null;
+  text5?: WelcomeImageText | null;
+}
+
+export interface WelcomeImageConfig {
+  enabled: boolean;
+  canvas?: WelcomeImageCanvas | null;
+  avatar?: WelcomeImageAvatar | null;
+  texts?: WelcomeImageTexts | null;
+}
+
 export interface WelcomeConfig {
   guild_id: number;
   welcome_type?: string | null;
@@ -197,6 +242,7 @@ export interface WelcomeConfig {
   channel_id?: string | null;
   embed_data?: WelcomeEmbedData | null;
   auto_delete_duration?: number | null;
+  image_config?: WelcomeImageConfig | null;
 }
 
 export interface WelcomeUpdate {
@@ -205,6 +251,7 @@ export interface WelcomeUpdate {
   channel_id?: number | null;
   embed_data?: WelcomeEmbedData | null;
   auto_delete_duration?: number | null;
+  image_config?: WelcomeImageConfig | null;
 }
 
 export interface AntiNukeConfig {
