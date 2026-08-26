@@ -32,6 +32,8 @@ export default function TrackingPage({ params }: { params: { guildId: string } }
   const [channels, setChannels] = useState<any[]>([]);
   const [config, setConfig] = useState<any>({
     channel_id: null,
+    join_message: "",
+    vanity_message: "",
   });
 
   const fetchData = async () => {
@@ -41,7 +43,11 @@ export default function TrackingPage({ params }: { params: { guildId: string } }
         api.getTracking(params.guildId),
         api.getChannels(params.guildId),
       ]);
-      setConfig(configData);
+      setConfig({
+        channel_id: configData.channel_id,
+        join_message: configData.join_message || "",
+        vanity_message: configData.vanity_message || "",
+      });
       setChannels(channelsData);
     } catch (error) {
       console.error("Failed to fetch tracking data:", error);
@@ -106,6 +112,38 @@ export default function TrackingPage({ params }: { params: { guildId: string } }
                 ...channels.map((chan) => ({ value: chan.id.toString(), label: `#${chan.name}` }))
               ]}
             />
+          </div>
+
+          <div className="space-y-4 border-t border-slate-800/60 pt-6 mt-4">
+            <h3 className="text-sm font-semibold text-white">Custom Invite Logs</h3>
+            
+            <div className="space-y-2">
+              <Label>Join Message (With Inviter)</Label>
+              <input 
+                type="text" 
+                placeholder="🎉 {user_mention} joined using an invite from {inviter_mention}!"
+                className="w-full bg-[#0f172a] border border-slate-800 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-primary"
+                value={config.join_message || ""}
+                onChange={(e) => setConfig({ ...config, join_message: e.target.value })}
+              />
+              <p className="text-[10px] text-slate-500">
+                Variables: <code>{`{user_mention}`}</code>, <code>{`{user_name}`}</code>, <code>{`{inviter_mention}`}</code>, <code>{`{inviter_name}`}</code>, <code>{`{invites_count}`}</code>
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label>Unknown/Vanity Invite Message</Label>
+              <input 
+                type="text" 
+                placeholder="🎉 {user_mention} joined using an unknown/vanity invite!"
+                className="w-full bg-[#0f172a] border border-slate-800 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-primary"
+                value={config.vanity_message || ""}
+                onChange={(e) => setConfig({ ...config, vanity_message: e.target.value })}
+              />
+              <p className="text-[10px] text-slate-500">
+                Variables: <code>{`{user_mention}`}</code>, <code>{`{user_name}`}</code>
+              </p>
+            </div>
           </div>
 
           <div className="flex justify-end pt-4">
