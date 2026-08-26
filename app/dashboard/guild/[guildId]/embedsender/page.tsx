@@ -166,7 +166,7 @@ export default function EmbedSenderPage({ params }: { params: { guildId: string 
                   <Label>Embed Title</Label>
                   <input 
                     type="text" 
-                    placeholder="🎉 UNDERWORLD REBIRTH • SMP RULES"
+                    placeholder="🎉 SERVER RULES & INFORMATION"
                     className="w-full bg-[#0f172a] border border-slate-800 rounded-xl px-3 py-2 text-sm text-white focus:outline-none"
                     value={form.title}
                     onChange={(e) => updateField("title", e.target.value)}
@@ -198,7 +198,7 @@ export default function EmbedSenderPage({ params }: { params: { guildId: string 
                   <span className="text-[10px] text-slate-500">Supports standard discord formatting</span>
                 </div>
                 <Textarea
-                  placeholder="Welcome to Underworld Rebirth! Follow these rules..."
+                  placeholder="Welcome to our community! Please write the description details here..."
                   className="min-h-[220px] bg-[#0f172a] border border-slate-800 text-sm font-sans"
                   value={form.description}
                   onChange={(e) => updateField("description", e.target.value)}
@@ -211,7 +211,7 @@ export default function EmbedSenderPage({ params }: { params: { guildId: string 
                   <Label>Author Name</Label>
                   <input 
                     type="text" 
-                    placeholder="Rebirth Links"
+                    placeholder="Server Announcements"
                     className="w-full bg-[#0f172a] border border-slate-800 rounded-xl px-3 py-2 text-sm text-white focus:outline-none"
                     value={form.author_name}
                     onChange={(e) => updateField("author_name", e.target.value)}
@@ -277,7 +277,7 @@ export default function EmbedSenderPage({ params }: { params: { guildId: string 
                   <Label>Footer Text</Label>
                   <input 
                     type="text" 
-                    placeholder="UNDERWORLD REBIRTH • Event Team"
+                    placeholder="Server Team • Broadcast System"
                     className="w-full bg-[#0f172a] border border-slate-800 rounded-xl px-3 py-2 text-sm text-white focus:outline-none"
                     value={form.footer_text}
                     onChange={(e) => updateField("footer_text", e.target.value)}
