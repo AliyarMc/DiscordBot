@@ -24,9 +24,10 @@ const WelcomeForm = dynamic(() => import("@/components/dashboard/welcome-form").
 });
 
 export default async function WelcomePage({ params }: { params: { guildId: string } }) {
-  const [welcomeData, channelsData] = await Promise.all([
+  const [welcomeData, channelsData, guildDetails] = await Promise.all([
     api.getWelcome(params.guildId),
-    api.getChannels(params.guildId)
+    api.getChannels(params.guildId),
+    api.getGuildDetails(params.guildId).catch(() => null)
   ]);
 
   if (!welcomeData) return null;
@@ -43,7 +44,12 @@ export default async function WelcomePage({ params }: { params: { guildId: strin
         </div>
       </div>
 
-      <WelcomeForm initialConfig={welcomeData} channels={channelsData} guildId={params.guildId} />
+      <WelcomeForm 
+        initialConfig={welcomeData} 
+        channels={channelsData} 
+        guildId={params.guildId} 
+        serverName={guildDetails?.name || "Vada SMP"} 
+      />
     </div>
   );
 }
