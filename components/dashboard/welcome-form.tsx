@@ -339,7 +339,63 @@ export function WelcomeForm({ initialConfig, channels, guildId, serverName = "Va
                         />
                       </div>
                     </div>
-                  </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="text-xs font-black uppercase text-slate-500 tracking-widest pl-1">Author Name</label>
+                        <input 
+                          type="text"
+                          value={config.embed_data?.author_name || ""}
+                          onChange={(e) => setConfig({ ...config, embed_data: { ...config.embed_data, author_name: e.target.value }})}
+                          className="w-full mt-2 bg-[#0f172a] border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 text-white"
+                          placeholder="Author Name"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-xs font-black uppercase text-slate-500 tracking-widest pl-1">Author Icon URL</label>
+                        <input 
+                          type="text"
+                          value={config.embed_data?.author_icon || ""}
+                          onChange={(e) => setConfig({ ...config, embed_data: { ...config.embed_data, author_icon: e.target.value }})}
+                          className="w-full mt-2 bg-[#0f172a] border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 text-white"
+                          placeholder="{server_icon} or https://..."
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="text-xs font-black uppercase text-slate-500 tracking-widest pl-1">Footer Text</label>
+                        <input 
+                          type="text"
+                          value={config.embed_data?.footer_text || ""}
+                          onChange={(e) => setConfig({ ...config, embed_data: { ...config.embed_data, footer_text: e.target.value }})}
+                          className="w-full mt-2 bg-[#0f172a] border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 text-white"
+                          placeholder="Footer Text"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-xs font-black uppercase text-slate-500 tracking-widest pl-1">Footer Icon URL</label>
+                        <input 
+                          type="text"
+                          value={config.embed_data?.footer_icon || ""}
+                          onChange={(e) => setConfig({ ...config, embed_data: { ...config.embed_data, footer_icon: e.target.value }})}
+                          className="w-full mt-2 bg-[#0f172a] border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 text-white"
+                          placeholder="https://..."
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between bg-slate-900/30 border border-slate-800/60 p-4 rounded-2xl mt-4">
+                      <div>
+                        <span className="text-sm font-bold text-white">Enable Embed Timestamp</span>
+                        <p className="text-xs text-slate-400 mt-1">Show the joining date/time in the embed footer.</p>
+                      </div>
+                      <Switch 
+                        checked={config.embed_data?.timestamp_enabled !== false}
+                        onCheckedChange={(val) => setConfig({ ...config, embed_data: { ...config.embed_data, timestamp_enabled: val }})}
+                      />
+                    </div>
                 )}
               </div>
 
