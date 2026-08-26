@@ -396,6 +396,7 @@ export function WelcomeForm({ initialConfig, channels, guildId, serverName = "Va
                         onCheckedChange={(val) => setConfig({ ...config, embed_data: { ...config.embed_data, timestamp_enabled: val }})}
                       />
                     </div>
+                  </div>
                 )}
               </div>
 
