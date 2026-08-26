@@ -43,6 +43,7 @@ interface WelcomeFormProps {
   initialConfig: WelcomeConfig;
   channels: DiscordChannel[];
   guildId: string;
+  serverName?: string;
 }
 
 const defaultImageConfig: WelcomeImageConfig = {
@@ -51,13 +52,13 @@ const defaultImageConfig: WelcomeImageConfig = {
     width: 1020,
     height: 450,
     background_type: "gradient",
-    background_color: "#0f081d",
-    gradient_color1: "#0f081d",
-    gradient_color2: "#2b0a3d",
+    background_color: "#080808",
+    gradient_color1: "#080808",
+    gradient_color2: "#140B17",
     background_image_url: "",
     overlay_opacity: 0.4,
     border_thickness: 8,
-    border_color: "#9b5de5"
+    border_color: "#FF6B00"
   },
   avatar: {
     x: 510,
@@ -65,11 +66,11 @@ const defaultImageConfig: WelcomeImageConfig = {
     size: 180,
     shape: "rounded",
     border_thickness: 8,
-    border_color: "#9b5de5"
+    border_color: "#FF6B00"
   },
   texts: {
     text1: {
-      content: "WELCOME TO {server_name}",
+      content: "WELCOME TO [accent:{server_name}]",
       x: 510,
       y: 60,
       color: "#ffffff",
@@ -86,7 +87,7 @@ const defaultImageConfig: WelcomeImageConfig = {
       content: "Member #{server_membercount}",
       x: 510,
       y: 370,
-      color: "#8f90a6",
+      color: "#FF6B00",
       font_size: 24
     },
     text4: {
@@ -100,13 +101,13 @@ const defaultImageConfig: WelcomeImageConfig = {
       content: "{server_name} • Community",
       x: 510,
       y: 430,
-      color: "#7a7c93",
+      color: "#A3A3A3",
       font_size: 14
     }
   }
 };
 
-export function WelcomeForm({ initialConfig, channels, guildId }: WelcomeFormProps) {
+export function WelcomeForm({ initialConfig, channels, guildId, serverName = "Vada SMP" }: WelcomeFormProps) {
   const [config, setConfig] = useState<WelcomeConfig>(() => {
     return {
       ...initialConfig,
@@ -396,7 +397,7 @@ export function WelcomeForm({ initialConfig, channels, guildId }: WelcomeFormPro
           <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-4">
             <WelcomePreviewCanvas 
               imageConfig={config.image_config} 
-              serverName={config.embed_data?.title ? formatVar(config.embed_data.title) : undefined}
+              serverName={serverName}
             />
             
             <div className="bg-[#141B2D] border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
@@ -805,6 +806,6 @@ export function WelcomeForm({ initialConfig, channels, guildId }: WelcomeFormPro
   );
 }
 
-function formatVar(text: string) {
-  return text.replace(/{server_name}/g, "UNDERWORLD Δ REBIRTH");
+function formatVar(text: string, serverName: string = "Vada SMP") {
+  return text.replace(/{server_name}/g, serverName);
 }
