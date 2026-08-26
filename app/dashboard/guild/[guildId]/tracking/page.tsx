@@ -171,4 +171,4 @@ export default function TrackingPage({ params }: { params: { guildId: string } }
       </Card>
     </div>
   );
-}
+} 
