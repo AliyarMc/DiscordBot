@@ -105,8 +105,8 @@ export default function TrackingPage({ params }: { params: { guildId: string } }
           <div className="space-y-2">
             <Label>Log Channel</Label>
             <Select
-              value={config.channel_id?.toString() || "none"}
-              onValueChange={(val) => setConfig({ ...config, channel_id: val === "none" ? null : parseInt(val) })}
+              value={config.channel_id || "none"}
+              onValueChange={(val) => setConfig({ ...config, channel_id: val === "none" ? null : val })}
               options={[
                 { value: "none", label: "Disabled" },
                 ...channels.map((chan) => ({ value: chan.id.toString(), label: `#${chan.name}` }))
@@ -171,4 +171,4 @@ export default function TrackingPage({ params }: { params: { guildId: string } }
       </Card>
     </div>
   );
-} 
+}
