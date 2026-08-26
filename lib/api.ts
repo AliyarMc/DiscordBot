@@ -230,6 +230,12 @@ export const api = {
       body: JSON.stringify(data),
     }),
 
+  sendEmbed: (guildId: string, data: any) =>
+    request<{ status: string }>(`/guilds/${guildId}/embedsender`, {
+      method: "POST",
+      body: JSON.stringify(data),
+    }),
+
   // Admin
   getAdminStats: () => request<AdminStats>("/admin/stats"),
   getAdminConfig: () => request<AdminConfig>("/admin/config"),
