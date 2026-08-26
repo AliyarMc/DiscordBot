@@ -188,6 +188,7 @@ export interface WelcomeEmbedData {
   author_icon?: string | null;
   thumbnail?: string | null;
   image?: string | null;
+  timestamp_enabled?: boolean;
 }
 
 export interface WelcomeImageCanvas {
