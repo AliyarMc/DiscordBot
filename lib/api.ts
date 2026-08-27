@@ -231,9 +231,34 @@ export const api = {
     }),
 
   sendEmbed: (guildId: string, data: any) =>
-    request<{ status: string }>(`/guilds/${guildId}/embedsender`, {
+    request<{ status: string; message_id?: string }>(`/guilds/${guildId}/embedsender`, {
       method: "POST",
       body: JSON.stringify(data),
+    }),
+
+  listSavedMessages: (guildId: string) =>
+    request<any[]>(`/guilds/${guildId}/embedsender/messages`),
+
+  createSavedMessage: (guildId: string, data: any, sendNow: boolean = true) =>
+    request<{ status: string; id: string; message_id?: string }>(`/guilds/${guildId}/embedsender/messages?send_now=${sendNow}`, {
+      method: "POST",
+      body: JSON.stringify(data),
+    }),
+
+  updateSavedMessage: (guildId: string, msgId: string, data: any, updateLive: boolean = true) =>
+    request<{ status: string; message_id?: string }>(`/guilds/${guildId}/embedsender/messages/${msgId}?update_live=${updateLive}`, {
+      method: "PATCH",
+      body: JSON.stringify(data),
+    }),
+
+  deleteSavedMessage: (guildId: string, msgId: string, deleteDiscord: boolean = false) =>
+    request<{ status: string }>(`/guilds/${guildId}/embedsender/messages/${msgId}?delete_discord=${deleteDiscord}`, {
+      method: "DELETE",
+    }),
+
+  sendSavedMessage: (guildId: string, msgId: string) =>
+    request<{ status: string; message_id: string }>(`/guilds/${guildId}/embedsender/messages/${msgId}/send`, {
+      method: "POST",
     }),
 
   // Admin
