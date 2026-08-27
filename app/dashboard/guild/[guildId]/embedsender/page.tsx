@@ -804,7 +804,7 @@ export default function EmbedSenderPage({ params }: { params: { guildId: string 
               <Layers className="w-16 h-16 text-slate-700 mx-auto" />
               <h3 className="text-xl font-bold text-white">No Message Templates Found</h3>
               <p className="text-slate-400 text-sm">
-                You haven't saved any templates yet. Head over to the Message Designer tab to create, send, and save your first template!
+                You haven&apos;t saved any templates yet. Head over to the Message Designer tab to create, send, and save your first template!
               </p>
               <Button 
                 onClick={() => setActiveTab("designer")} 
@@ -862,7 +862,7 @@ export default function EmbedSenderPage({ params }: { params: { guildId: string 
                       {/* Content Preview */}
                       {(msg.title || msg.description || msg.message) && (
                         <div className="bg-slate-950/40 rounded-xl p-3 border border-slate-900 text-[11px] text-slate-400 space-y-1 max-h-24 overflow-y-auto no-scrollbar">
-                          {msg.message && <p className="italic text-slate-500">"{msg.message}"</p>}
+                          {msg.message && <p className="italic text-slate-500">&quot;{msg.message}&quot;</p>}
                           {msg.title && <p className="font-bold text-slate-200">{msg.title}</p>}
                           {msg.description && <p className="line-clamp-2">{msg.description}</p>}
                         </div>
