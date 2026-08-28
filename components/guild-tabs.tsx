@@ -43,7 +43,8 @@ import {
   Zap,
   Mic,
   Mail,
-  Send
+  Send,
+  UserMinus
 } from "lucide-react";
 
 interface Tab {
@@ -73,6 +74,7 @@ export function GuildTabs({ guildId }: { guildId: string }) {
     { name: "Tickets", href: `/dashboard/guild/${guildId}/tickets`, icon: Ticket },
     { name: "Verification", href: `/dashboard/guild/${guildId}/verification`, icon: Shield },
     { name: "Welcome", href: `/dashboard/guild/${guildId}/welcome`, icon: SmilePlus },
+    { name: "Leave Log", href: `/dashboard/guild/${guildId}/leave`, icon: UserMinus },
     { name: "Invites", href: `/dashboard/guild/${guildId}/invites`, icon: LinkIcon },
     { name: "Auto Role", href: `/dashboard/guild/${guildId}/autorole`, icon: Bot },
     { name: "Reaction Roles", href: `/dashboard/guild/${guildId}/reactionroles`, icon: Activity },
