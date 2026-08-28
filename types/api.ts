@@ -256,6 +256,37 @@ export interface WelcomeUpdate {
   image_config?: WelcomeImageConfig | null;
 }
 
+export interface LeaveEmbedData {
+  message?: string | null;
+  title?: string | null;
+  description?: string | null;
+  color?: string | null;
+  footer_text?: string | null;
+  footer_icon?: string | null;
+  author_name?: string | null;
+  author_icon?: string | null;
+  thumbnail?: string | null;
+  image?: string | null;
+  timestamp_enabled?: boolean;
+}
+
+export interface LeaveConfig {
+  guild_id: number;
+  leave_type?: string | null;
+  leave_message?: string | null;
+  channel_id?: string | null;
+  embed_data?: LeaveEmbedData | null;
+  auto_delete_duration?: number | null;
+}
+
+export interface LeaveUpdate {
+  leave_type?: string | null;
+  leave_message?: string | null;
+  channel_id?: string | null;
+  embed_data?: LeaveEmbedData | null;
+  auto_delete_duration?: number | null;
+}
+
 export interface AntiNukeConfig {
   guild_id: number;
   status: boolean;
