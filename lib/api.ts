@@ -143,6 +143,13 @@ export const api = {
       body: JSON.stringify(data),
     }),
 
+  getLeave: (guildId: string) => request<any>(`/guilds/${guildId}/leave`),
+  updateLeave: (guildId: string, data: any) => 
+    request<{ status: string }>(`/guilds/${guildId}/leave`, {
+      method: "PATCH",
+      body: JSON.stringify(data),
+    }),
+
   getAntiNuke: (guildId: string) => request<any>(`/guilds/${guildId}/antinuke`),
   updateAntiNuke: (guildId: string, data: any) => 
     request<{ status: string }>(`/guilds/${guildId}/antinuke`, {
